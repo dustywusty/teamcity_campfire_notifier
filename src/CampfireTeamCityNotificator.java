@@ -86,7 +86,12 @@ public class CampfireTeamCityNotificator implements Notificator {
     }
 
     public void notifyBuildProbablyHanging(SRunningBuild sRunningBuild, Set<SUser> sUsers) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        String message =  "Build " + sRunningBuild.getFullName() + " #" +
+                sRunningBuild.getBuildNumber() + " probably hanging. ";
+
+        for (SUser user : sUsers) {
+            notify(user, message);
+        }
     }
 
     public void notifyResponsibleChanged(SBuildType sBuildType, Set<SUser> sUsers) {
