@@ -41,7 +41,12 @@ public class CampfireTeamCityNotificator implements Notificator {
     }
 
     public void notifyBuildStarted(SRunningBuild sRunningBuild, Set<SUser> sUsers) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        String message =  "Build " + sRunningBuild.getFullName() + " #" +
+                sRunningBuild.getBuildNumber() + " started. ";
+
+        for (SUser user : sUsers) {
+            notify(user, message);
+        }
     }
 
     public void notifyBuildSuccessful(SRunningBuild sRunningBuild, Set<SUser> sUsers) {
@@ -60,7 +65,6 @@ public class CampfireTeamCityNotificator implements Notificator {
         for (SUser user : sUsers) {
             notify(user, message);
         }
-
     }
 
     private void notify(SUser user, String message) {
